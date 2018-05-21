@@ -16,8 +16,10 @@ class LINE_API
         $post_data = [
             "replyToken" => $replay_token,
             "messages" => [
-                "type" => "text",
-                "text" => $message
+                [
+                    "type" => "text",
+                    "text" => $message
+                ],
             ]
         ];
         return $this->PostAPI($post_data);
