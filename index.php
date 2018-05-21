@@ -12,7 +12,6 @@ $api = new LINE_API();
 $api->ReplayMessage($replay_token,"test ok!");
 
 
-
 //メッセージの送信
 function sending_messages($accessToken, $replyToken, $message_type, $return_message_text){
     //レスポンスフォーマット

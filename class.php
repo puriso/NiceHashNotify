@@ -4,7 +4,7 @@ class LINE_API
 {
     function __construct()
     {
-
+echo ACCESS_TOKEN;
     }
 
     /*
