@@ -6,7 +6,7 @@ require_once( dirname(__FILE__).DIRECTORY_SEPARATOR."class.php" );
 $requests = json_decode(file_get_contents('php://input'));
 
 $message_text = $requests->{"events"}[0]->{"message"}->{"text"};
-$replay_token = $json_object->{"events"}[0]->{"replyToken"};
+$replay_token = $requests->{"events"}[0]->{"replyToken"};
 
 $api = new LINE_API();
 $api->ReplayMessage($replay_token,"test ok!");
