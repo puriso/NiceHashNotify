@@ -89,6 +89,7 @@ class NiceHashAPI
         $profitability = 0;
         $unpaind = 0;
         foreach($status->result->current as $c){
+            echo $c->data[1]."<br>";
             $unpaind += $c->data[1];
         }
         return $unpaind;
