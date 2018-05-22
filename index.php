@@ -2,7 +2,7 @@
 ini_set('display_errors', "1");
 define("CLASS_DIRECTORY",dirname(__FILE__).DIRECTORY_SEPARATOR."class".DIRECTORY_SEPARATOR);
 
-require_once( dirname(__FILE__).DIRECTORY_SEPARATOR."class"."config.php" );
+require_once( dirname(__FILE__).DIRECTORY_SEPARATOR."config.php" );
 require_once( CLASS_DIRECTORY . "LineApi.php" );
 require_once( CLASS_DIRECTORY . "NiceHashApi.php" );
 require_once( CLASS_DIRECTORY . "BtcExchangeApi.php" );
