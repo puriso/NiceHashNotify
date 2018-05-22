@@ -7,6 +7,7 @@ define("CLASS_DIRECTORY",dirname(__FILE__).DIRECTORY_SEPARATOR.RELATIVE_PATH.DIR
 require_once( dirname(__FILE__).DIRECTORY_SEPARATOR.RELATIVE_PATH.DIRECTORY_SEPARATOR."config.php" );
 require_once( CLASS_DIRECTORY . "LineApi.php" );
 require_once( CLASS_DIRECTORY . "NiceHashApi.php" );
+require_once( CLASS_DIRECTORY . "BtcExchangeApi.php" );
 
 $NiceHashAPI     = new NiceHashAPI();
 $nicehash_status = $NiceHashAPI->MakeTextForMessage();
