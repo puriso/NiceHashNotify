@@ -9,6 +9,7 @@ require_once( CLASS_DIRECTORY . "BtcExchangeApi.php" );
 
 // Http request body
 $requests = json_decode(file_get_contents('php://input'));
+if(empty($requests)) exit;
 
 $message_text = $requests->{"events"}[0]->{"message"}->{"text"};
 $replay_token = $requests->{"events"}[0]->{"replyToken"};
