@@ -45,6 +45,13 @@ class NiceHashAPI
     {
         $this->base_url = "https://api.nicehash.com/api?";
     }
+    function FetchInfo()
+    {
+        $params = "https://api.nicehash.com/api?method=stats.provider.ex&addr=". BITCOIN_ADDRESS;
+
+        return json_decode( $this->PostAPI($this->base_url.$params) );
+    }
+
 
     /*
      * STATUS取得
