@@ -107,8 +107,8 @@ class NiceHashAPI
     {
 
         $mining_status = $this->FetchMiningStatus();
-        $profitability = $this->GetProfitability($mining_status);
-        $unpaid       = $this->GetUnpaid($mining_status);
+        $profitability = ceil($this->GetProfitability($mining_status),8);
+        $unpaid       = ceil($this->GetUnpaid($mining_status),8);
         $worker_status = $this->FetchWorkersStatus();
 
         /*
@@ -151,8 +151,8 @@ class NiceHashAPI
             $worker_doing[$rigname] += 1;
         }
         $worker_count = count($worker_doing);
-        $profitability_jpy = number_format(ceil($this->btc_exchange_api->GetData() * $profitability,8));
-        $unpaid_jpy        = number_format(ceil($this->btc_exchange_api->GetData() * $unpaid,8));
+        $profitability_jpy = number_format($this->btc_exchange_api->GetData() * $profitability);
+        $unpaid_jpy        = number_format($this->btc_exchange_api->GetData() * $unpaid);
 
 
         return "🚧 Hi,NOW MINING ! 🚧
