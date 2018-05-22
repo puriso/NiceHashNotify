@@ -72,8 +72,9 @@ class NiceHashAPI
     {
         if(empty($status)) $status = $this->FetchMiningStatus();
 
-        $profitability = 0.0000;
+        $profitability = 0;
         foreach($status->result->current as $c){
+            echo $c->profitability."<br>";
             $profitability +=  $c->profitability;
         }
         return $profitability;
@@ -89,7 +90,6 @@ class NiceHashAPI
         $profitability = 0.0000;
         $unpaind       = 0.0000;
         foreach($status->result->current as $c){
-            echo $c->data[1]."<br>";
             $unpaind += $c->data[1];
         }
         return $unpaind;
