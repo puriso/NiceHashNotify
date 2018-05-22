@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', "1");
 echo "start";
 define("RELATIVE_PATH","..");
 define("CLASS_DIRECTORY",dirname(__FILE__).DIRECTORY_SEPARATOR.RELATIVE_PATH.DIRECTORY_SEPARATOR."class".DIRECTORY_SEPARATOR);
