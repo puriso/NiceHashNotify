@@ -1,6 +1,6 @@
 <?php
 
-class LINE_API
+class LineAPI
 {
     function __construct()
     {
