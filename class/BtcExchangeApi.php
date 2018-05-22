@@ -8,7 +8,7 @@ class BtcExchangeApi
     public $data;
     function __construct()
     {
-        $api_url = "https://blockchain.info/api/exchange_rates_api";
+        $api_url = "https://blockchain.info/ja/ticker";
 
         //curl実行
         $ch = curl_init($api_url);
@@ -20,7 +20,6 @@ class BtcExchangeApi
         $this->data = curl_exec($ch);
         curl_close($ch);
 
-        var_dump($this->data);
     }
 
     function GetData()
