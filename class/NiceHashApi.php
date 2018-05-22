@@ -69,8 +69,8 @@ class NiceHashAPI
             "0.1", // difficulty
             0, // connected to location (0 for EU, 1 for US, 2 for HK and 3 for JP)
          */
-        $workers = $status->result->Workers;
-        var_dump($status);
+        $workers = $status->result->workers;
+        var_dump($status->result);
 
         foreach($workers as $w){
             $rigname       = $w[0];
