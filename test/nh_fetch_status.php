@@ -9,6 +9,6 @@ require_once( CLASS_DIRECTORY . "LineApi.php" );
 require_once( CLASS_DIRECTORY . "NiceHashApi.php" );
 
 $NiceHashAPI     = new NiceHashAPI();
-$nicehash_status = $NiceHashAPI->FetchWorkerStatus();
+$nicehash_status = $NiceHashAPI->MakeTextForMessage();
 
 print_r($nicehash_status);
