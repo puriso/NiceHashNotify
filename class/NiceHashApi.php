@@ -107,8 +107,8 @@ class NiceHashAPI
     {
 
         $mining_status = $this->FetchMiningStatus();
-        $profitability = ceil($this->GetProfitability($mining_status),8);
-        $unpaid       = ceil($this->GetUnpaid($mining_status),8);
+        $profitability = round($this->GetProfitability($mining_status),8);
+        $unpaid        = round($this->GetUnpaid($mining_status),8);
         $worker_status = $this->FetchWorkersStatus();
 
         /*
