@@ -13,4 +13,3 @@ $nicehash_status = $NiceHashAPI->MakeTextForMessage();
 
 print_r($nicehash_status);
 
-print_r($NiceHashAPI->FetchMiningStatus());
