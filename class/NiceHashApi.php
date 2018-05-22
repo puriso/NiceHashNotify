@@ -107,7 +107,6 @@ class NiceHashAPI
     {
 
         $mining_status = $this->FetchMiningStatus();
-        print_r($mining_status);
         $profitability = $this->GetProfitability($mining_status);
         $unpaid       = $this->GetUnpaid($mining_status);
         $worker_status = $this->FetchWorkersStatus();
