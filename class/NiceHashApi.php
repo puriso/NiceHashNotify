@@ -70,8 +70,8 @@ class NiceHashAPI
             0, // connected to location (0 for EU, 1 for US, 2 for HK and 3 for JP)
          */
         $workers = $status->result->workers;
-        var_dump($status->result);
 
+        $workers_text = "";
         foreach($workers as $w){
             $rigname       = $w[0];
             $algorithm     = $this->algorithms[$w[6]];
@@ -86,7 +86,7 @@ Workers:
 Unpaid balance:
 
 👷Active workers
-$workers_tex ";
+$workers_text ";
 
     }
 
