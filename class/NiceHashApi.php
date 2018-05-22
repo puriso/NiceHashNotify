@@ -157,8 +157,6 @@ class NiceHashAPI
 
         return "🚧 Hi,NOW MINING ! 🚧
 
-💹Profitability:
-{$profitability}BTC / {$profitability_jpy}円
 👷️Workers: {$worker_count}
 💰Unpaid balance: {$unpaid}BTC / {$unpaid_jpy}円
 
@@ -167,6 +165,12 @@ class NiceHashAPI
 
 $workers_text
 ---------------";
+
+
+        // @todo Profitabilityが正しく取得できない問題がある
+        //💹Profitability:
+        //{$profitability}BTC / {$profitability_jpy}円
+
     }
 
 
