@@ -5,7 +5,6 @@
  * https://www.nicehash.com/doc-api
  */
 
-require_once( dirname(__FILE__).DIRECTORY_SEPARATOR."BtcExchangeApi.php" );
 class NiceHashAPI
 {
     public $base_url;

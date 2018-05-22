@@ -4,6 +4,7 @@ define("CLASS_DIRECTORY",dirname(__FILE__).DIRECTORY_SEPARATOR."class".DIRECTORY
 require_once( dirname(__FILE__).DIRECTORY_SEPARATOR."class"."config.php" );
 require_once( CLASS_DIRECTORY . "LineApi.php" );
 require_once( CLASS_DIRECTORY . "NiceHashApi.php" );
+require_once(  CLASS_DIRECTORY . "BtcExchangeApi.php" );
 
 // Http request body
 $requests = json_decode(file_get_contents('php://input'));
