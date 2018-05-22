@@ -146,7 +146,8 @@ class NiceHashAPI
 
 
             $workers_text .= " $rigname/n";
-            $workers_text .= "$algorithm / $hashrate";
+            $workers_text .= "    $algorithm \n";
+            $workers_text .= "    $hashrate";
 
             $worker_doing[$rigname] += 1;
         }
