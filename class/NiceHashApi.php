@@ -53,7 +53,7 @@ class NiceHashAPI
      */
     function FetchMiningStatus()
     {
-        $params = "method=stats.provider.ex&addr=" . BITCOIN_ADDRESS;
+        $params = "method=stats.provider.ex&addr=" . BITCOIN_ADDRESS."&from=".date("U",strtotime("-1 day"));
         return json_decode( $this->PostAPI($this->base_url.$params) );
     }
 
@@ -62,7 +62,7 @@ class NiceHashAPI
      */
     function FetchWorkersStatus()
     {
-        $params = "method=stats.provider.workers&from=".date("U",strtotime("-1 day"))."&addr=" . BITCOIN_ADDRESS;
+        $params = "method=stats.provider.workers&addr=" . BITCOIN_ADDRESS;
         return json_decode( $this->PostAPI($this->base_url.$params) );
     }
     /*
