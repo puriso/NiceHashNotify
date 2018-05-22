@@ -79,7 +79,9 @@ class NiceHashAPI
 
         foreach($status->result->past as $c){
             foreach($c->data as $d){
-                $profitability += $d[2];
+                if($d[0] >= date("U",strtotime("-1 day"))){
+                    $profitability += $d[2];
+                }
             }
         }
         return $profitability;
