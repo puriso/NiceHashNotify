@@ -4,6 +4,8 @@
  * @memo Read nicehash's documents.
  * https://www.nicehash.com/doc-api
  */
+
+require_once( dirname(__FILE__).DIRECTORY_SEPARATOR."BtcExchangeApi.php" );
 class NiceHashAPI
 {
     public $base_url;
@@ -40,10 +42,11 @@ class NiceHashAPI
         29 => "Skunk",
         30 => "CryptoNightV7",
     ];
-
+    private $btc_exchange_api;
     function __construct()
     {
-        $this->base_url = "https://api.nicehash.com/api?";
+        $this->base_url         = "https://api.nicehash.com/api?";
+        $this->btc_exchange_api = new BtcExchangeApi;
     }
 
     /*
@@ -64,11 +67,45 @@ class NiceHashAPI
         return json_decode( $this->PostAPI($this->base_url.$params) );
     }
     /*
+     * Profitabilityの取得
+     */
+    function GetProfitability($status)
+    {
+        if(empty($status)) $status = $this->FetchMiningStatus();
+
+        $profitability = 0;
+        foreach($status->result->current as $c){
+            $profitability +=  $c->profitability;
+        }
+        return $profitability;
+    }
+
+    /*
+     * Unpaidの取得
+     */
+    function GetUnpaid($status)
+    {
+        if(empty($status)) $status = $this->FetchMiningStatus();
+
+        $profitability = 0;
+        $unpaind = 0;
+        foreach($status->result->current as $c){
+            $unpaind += $c->data[1];
+        }
+        return $unpaind;
+    }
+
+    /*
      * メッセージ用のテキストを作成
      */
     function MakeTextForMessage()
     {
-        $status = $this->FetchWorkersStatus();
+
+        $mining_status = $this->FetchMiningStatus();
+        $profitability = $this->GetProfitability($mining_status);
+        $unpaind = $this->GetUnpaid($mining_status);
+
+        $worker_status = $this->FetchWorkersStatus();
 
         /*
             "rigname", // name of the worker
@@ -78,21 +115,27 @@ class NiceHashAPI
             "0.1", // difficulty
             0, // connected to location (0 for EU, 1 for US, 2 for HK and 3 for JP)
          */
-        $workers = $status->result->workers;
+        $workers = $worker_status->result->workers;
 
         $workers_text = "";
+        $worker_count = [];
         foreach($workers as $w){
             $rigname       = $w[0];
             $algorithm     = $this->algorithms[$w[6]];
             $hashrate      = $w[1]->a;
             $workers_text .= " * $rigname : $algorithm / $hashrate"."\n";
 
+            $worker_count[$rigname] += 1;
         }
 
-        return "Profitability:
-Efficiency:
-Workers:
-Unpaid balance:
+        $exchange_data = $this->btc_exchange_api->GetData;
+        var_dump($exchange_data);
+        $usd = $profitability * $exchange_data->USD["15m"];
+
+
+        return "Profitability: {$profitability}BTC
+Workers: {count($worker_count)}
+Unpaid balance: {$unpaind}
 
 👷Active workers
 $workers_text ";
