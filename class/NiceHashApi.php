@@ -77,11 +77,11 @@ class NiceHashAPI
             $profitability +=  $c->profitability;
         }
 
-        foreach($status->result->past as $c){
-            foreach($c->data as $d){
-                $profitability += $d[2];
-            }
-        }
+        //foreach($status->result->past as $c){
+        //    foreach($c->data as $d){
+        //        $profitability += $d[2];
+        //    }
+        //}
         return $profitability;
     }
 
