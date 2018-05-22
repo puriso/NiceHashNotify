@@ -25,6 +25,9 @@ class BtcExchangeApi
         curl_close($ch);
 
         $data = json_decode($json);
+
+        var_dump($data->data);
+
         return $data->data->last;
     }
 
