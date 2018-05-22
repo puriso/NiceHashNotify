@@ -8,7 +8,7 @@ The source codes is prototype.
 
 ## API references
 
-* Nicehash API
+* Nicehash API<br>
 https://www.nicehash.com/doc-api
-* Messaging API(LINE)
+* Messaging API(LINE)<br>
 https://developers.line.me/ja/docs/messaging-api/reference/
