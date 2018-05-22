@@ -5,10 +5,14 @@
  */
 class BtcExchangeApi
 {
-    public $data;
     function __construct()
     {
-        $api_url = "https://blockchain.info/ja/ticker";
+    }
+
+    function GetData()
+    {
+
+        $api_url = "https://public.bitbank.cc/btc_jpy/ticker";
 
         //curl実行
         $ch = curl_init($api_url);
@@ -17,15 +21,11 @@ class BtcExchangeApi
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
         ));
-        $this->data = curl_exec($ch);
+        $json = curl_exec($ch);
         curl_close($ch);
 
-        var_dump($this->data);
-    }
-
-    function GetData()
-    {
-        return json_decode($this->data);
+        $data = json_decode($json);
+        return $data->data->last;
     }
 
 }
