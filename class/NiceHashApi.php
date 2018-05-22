@@ -118,23 +118,23 @@ class NiceHashAPI
         $workers = $worker_status->result->workers;
 
         $workers_text = "";
-        $worker_count = [];
+        $worker_doing = [];
         foreach($workers as $w){
             $rigname       = $w[0];
             $algorithm     = $this->algorithms[$w[6]];
             $hashrate      = $w[1]->a;
             $workers_text .= " * $rigname : $algorithm / $hashrate"."\n";
 
-            $worker_count[$rigname] += 1;
+            $worker_doing[$rigname] += 1;
         }
-
+        $worker_count = count($worker_doing);
         $exchange_data = $this->btc_exchange_api->GetData;
         var_dump($exchange_data);
         $usd = $profitability * $exchange_data->USD["15m"];
 
 
         return "Profitability: {$profitability}BTC
-Workers: {count($worker_count)}
+Workers: {$worker_count}
 Unpaid balance: {$unpaind}
 
 👷Active workers

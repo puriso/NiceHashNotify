@@ -19,6 +19,8 @@ class BtcExchangeApi
         ));
         $this->data = curl_exec($ch);
         curl_close($ch);
+
+        var_dump($this->data);
     }
 
     function GetData()
