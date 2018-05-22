@@ -87,8 +87,8 @@ class NiceHashAPI
     {
         if(empty($status)) $status = $this->FetchMiningStatus();
 
-        $profitability = 0.0000;
-        $unpaind       = 0.0000;
+        $profitability = 0;
+        $unpaind       = 0;
         foreach($status->result->current as $c){
             $unpaind += $c->data[1];
         }
@@ -133,7 +133,7 @@ class NiceHashAPI
 
         return "Profitability: {$profitability}BTC / {$profitability_jpy}円
 Workers: {$worker_count}
-Unpaid balance: {$unpaind}BTC / {$unpaind_jpy}円
+Unpaid balance: {$unpaind}BTC / {$unpaid_jpy}円
 
 👷Active workers
 $workers_text ";
