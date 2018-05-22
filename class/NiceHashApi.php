@@ -77,8 +77,6 @@ class NiceHashAPI
             $profitability +=  $c->profitability;
         }
 
-        print_r($status->result->current);
-
         foreach($status->result->past as $c){
             foreach($c->data as $d){
                 $profitability += $d[2];
