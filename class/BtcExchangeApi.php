@@ -26,7 +26,7 @@ class BtcExchangeApi
 
         $data = json_decode($json);
 
-        var_dump($data->data);
+        var_dump($data);
 
         return $data->data->last;
     }
