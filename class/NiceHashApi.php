@@ -123,26 +123,33 @@ class NiceHashAPI
 
         $workers_text = "";
         $worker_doing = [];
+        $is_first;
         foreach($workers as $w){
+            if(isset($is_first)){
+                $workers_text .= "\n";
+            }else{
+                $is_first = true;
+            }
             $rigname       = $w[0];
             $algorithm     = $this->algorithms[$w[6]];
             $hashrate      = $w[1]->a;
-            $workers_text .= " * $rigname : $algorithm / $hashrate"."\n";
+            $workers_text .= " * $rigname : $algorithm / $hashrate";
 
             $worker_doing[$rigname] += 1;
         }
         $worker_count = count($worker_doing);
-        $profitability_jpy = number_format($this->btc_exchange_api->GetData() * $profitability);
-        $unpaid_jpy        = number_format($this->btc_exchange_api->GetData() * $unpaid);
+        $profitability_jpy = number_format(ceil($this->btc_exchange_api->GetData(),9) * $profitability);
+        $unpaid_jpy        = number_format(ceil($this->btc_exchange_api->GetData()) * $unpaid);
 
 
         return "🚧 Hi,NOW MINING ! 🚧
-Profitability: {$profitability}BTC / {$profitability_jpy}円
-Workers: {$worker_count}
-Unpaid balance: {$unpaid}BTC / {$unpaid_jpy}円
+💹Profitability:
+{$profitability}BTC / {$profitability_jpy}円
+👷♉️Workers: {$worker_count}
+💰Unpaid balance: {$unpaid}BTC / {$unpaid_jpy}円
 
 ---------------
-👷Active workers
+🚦Active workers🚦
 
 $workers_text
 ---------------";
