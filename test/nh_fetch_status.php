@@ -11,4 +11,4 @@ require_once( CLASS_DIRECTORY . "NiceHashApi.php" );
 $NiceHashAPI     = new NiceHashAPI();
 $nicehash_status = $NiceHashAPI->FetchWorkerStatus();
 
-var_dump($nicehash_status);
+print_r($nicehash_status);
