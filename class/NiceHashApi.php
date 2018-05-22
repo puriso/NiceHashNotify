@@ -133,7 +133,20 @@ class NiceHashAPI
             $rigname       = $w[0];
             $algorithm     = $this->algorithms[$w[6]];
             $hashrate      = $w[1]->a;
-            $workers_text .= " ☀️ $rigname : $algorithm / $hashrate";
+
+            $sun = "☀️";
+            $could = "☁";
+
+            if(empty($hashrate)){
+                $workers_text .= $could;
+                $hashrate = "unknown";
+            }else{
+                $workers_text .= $sun;
+            }
+
+
+            $workers_text .= " $rigname/n";
+            $workers_text .= "$algorithm / $hashrate";
 
             $worker_doing[$rigname] += 1;
         }
