@@ -62,7 +62,7 @@ class NiceHashAPI
      */
     function FetchWorkersStatus()
     {
-        $params = "method=stats.provider.workers&addr=" . BITCOIN_ADDRESS;
+        $params = "method=stats.provider.workers&from=".date("U",strtotime("-1 day"))."&addr=" . BITCOIN_ADDRESS;
         return json_decode( $this->PostAPI($this->base_url.$params) );
     }
     /*
@@ -74,15 +74,12 @@ class NiceHashAPI
 
         $profitability = 0;
         foreach($status->result->current as $c){
-            echo $c->profitability."<br>";
             $profitability +=  $c->profitability;
         }
 
         foreach($status->result->past as $c){
             foreach($c->data as $d){
-                if($d[0] >= date("U",strtotime("-1 day"))){
-                    $profitability += $d[2];
-                }
+                $profitability += $d[2];
             }
         }
         return $profitability;
