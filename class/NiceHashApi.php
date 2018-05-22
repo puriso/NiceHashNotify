@@ -128,12 +128,13 @@ class NiceHashAPI
             $worker_doing[$rigname] += 1;
         }
         $worker_count = count($worker_doing);
-        $profitability_jpy = number_format($this->btc_exchange_api->GetData);
+        $profitability_jpy = number_format($this->btc_exchange_api->GetData * $profitability);
+        $unpaid_jpy        = number_format($this->btc_exchange_api->GetData * $unpaid);
 
 
-        return "Profitability: {$profitability}BTC /{$profitability_jpy} 円
+        return "Profitability: {$profitability}BTC / {$profitability_jpy}円
 Workers: {$worker_count}
-Unpaid balance: {$unpaind}
+Unpaid balance: {$unpaind}BTC / {$unpaind_jpt}円
 
 👷Active workers
 $workers_text ";
