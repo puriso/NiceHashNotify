@@ -144,8 +144,7 @@ class NiceHashAPI
                 $workers_text .= $sun;
             }
 
-
-            $workers_text .= " $rigname/n";
+            $workers_text .= " $rigname\n";
             $workers_text .= "    $algorithm \n";
             $workers_text .= "    $hashrate";
 
