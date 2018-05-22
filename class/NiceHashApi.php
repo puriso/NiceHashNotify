@@ -136,12 +136,16 @@ class NiceHashAPI
         $unpaid_jpy        = number_format($this->btc_exchange_api->GetData() * $unpaid);
 
 
-        return "Profitability: {$profitability}BTC / {$profitability_jpy}円
+        return "🚧 Hi,NOW MINING ! 🚧
+Profitability: {$profitability}BTC / {$profitability_jpy}円
 Workers: {$worker_count}
 Unpaid balance: {$unpaid}BTC / {$unpaid_jpy}円
 
+---------------
 👷Active workers
-$workers_text ";
+
+$workers_text
+---------------";
 
     }
 
