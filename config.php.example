@@ -1,0 +1,12 @@
+<?php
+/*
+ * Config
+ *
+ */
+
+
+// アカウント情報
+define("ACCESS_TOKEN","X");
+
+// NICEHASHアカウント情報
+define("BITCOIN_ADDRESS","X");
